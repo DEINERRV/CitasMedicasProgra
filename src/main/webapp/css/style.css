@@ -1,0 +1,303 @@
+:root{
+
+    /** Tamaño de Media Queries **/
+    --telefono: 480px;
+    --tablet: 768px;
+    --desktop: 1024px;
+
+    /** Colores **/
+    --negro: #000000;
+    --amarillo: #E08709;;
+    --verde: #71B100;
+    --azul: #00abfb;
+    --blanco: #FFFFFF;
+    --grisClaro: #e1e1e1;
+    --grisOscuro: #333333;
+    --gris: #757575;
+    --cafe: #572a00;
+
+    --separacion: 5rem;
+
+    /** Fuentes **/
+    --delgada: 300;
+    --regular : 400;
+    --bold: 700;
+    --black: 900;
+}
+
+html{
+    font-size: 62.5%;
+    font-family: 'krub',sans-serif;
+    box-sizing: border-box;
+    scroll-snap-type: y mandatory;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body{ font-size: 1.6rem; }
+h1{ font-size: 3.8rem; }
+h2{ font-size: 2.8rem; }
+h3{ font-size: 1.8rem; }
+a{ text-decoration: none; }
+
+/** Utiles **/
+.negrita{
+    font-weight: bold;
+}
+.centrado{
+    text-align: center;
+}
+.alinear-derecha{
+    display: flex;
+    justify-content: right;
+}
+.inline-block{
+    display: inline-block;
+}
+.padding1{
+    padding: 1rem;
+}
+.boton{
+    display: block;
+    background-color: black;
+    color: white;
+    padding: 1.5rem 3rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: .5rem;
+    text-align: center;
+    border: none;
+    margin: 2rem 0;
+}
+.boton:hover{
+    cursor: pointer;
+}
+.dos-columnas{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+/** Contenedor **/
+.contenedor{
+    width: 95%;
+    margin: 0 auto;
+}
+@media (min-width: 768px){
+    .contenedor{
+        max-width: 120rem;
+        margin: 0 auto;
+    }
+}
+
+/** Header **/
+.header *{
+    color: white;
+}
+.inicio{
+    background-image: url("../img/banner.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 50rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+.header{
+    background-color: var(--azul);
+    padding: .5rem;
+}
+.header-info{
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.navegacion *{
+    color: white
+}
+.navegacion{
+    margin: 2rem auto;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:space-evenly;
+}
+.navegacion-links{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
+}
+.logo{
+    font-weight: normal;
+}
+.logo span{
+    font-weight: bold;
+}
+/** Para pantallas mayores a tablets **/
+@media (min-width: 768px){
+
+    .navegacion{
+        margin: 2rem auto;
+        width: 95%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content:space-evenly;
+    }
+    .navegacion-links{
+        flex-direction: row;
+    }
+}
+
+/** Seccion-Nosotros-Iconos **/
+@media (min-width: 768px){
+    .contenido-iconos-nosotros{
+        display: flex;
+        justify-content: space-between; 
+    }
+}
+.contenido-iconos-nosotros{
+    margin-bottom: 4rem;
+}
+.info-iconos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 4rem 2rem;
+}
+.info-iconos img{
+    width: 10rem;
+    height: 10rem;
+}
+.info-iconos p{
+    text-align: center;
+}
+
+/** Seccion Anuncio Doctores **/
+.doctor{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--grisClaro);
+    border: 1px solid var(--grisOscuro);
+    margin-bottom: 2rem;
+}
+@media(min-width: 760px){
+    .doctor{
+        display: grid;
+        grid-template-columns: 2fr 1fr 2fr 1fr;
+        gap: 2rem;
+    }
+}
+.contenido-doctor{
+    padding: 0 1rem;
+}
+.contenido-doctor .precio{
+    color: var(--azul);
+    font-weight: var(--bold);
+    font-size: 3rem;
+    margin: 1rem 0;
+}
+.horario-doctor{
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    margin: 0 1rem;
+}
+.foto-doctor{
+    padding: 1rem;
+    width: 100%;
+}
+
+/** Horario extenso **/
+.horario-extenso{
+    display: grid;
+    grid-template-columns: 1fr 50fr 1fr;
+
+    margin: 4rem 0;
+}
+.move-horario{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/** Doctor Contacto **/
+.imagen-contacto{
+    background-image: url("../img/consultorio.jpg");
+    background-position: 20rem;
+    background-size: cover;
+
+    padding: 6rem 0;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin: 4rem 0;
+}
+.imagen-contacto h2{
+    font-weight: var(--bold);
+    font-size: 4rem;
+}
+.imagen-contacto  p{
+    font-size: 1.8rem;
+}
+
+/** Footer **/
+.footer{
+    background-color: black;
+    padding: .5rem;
+    margin-top: 2rem;
+}
+
+/** Nosotros **/
+.contenido-nosotros{
+    margin: 4rem auto;
+}
+@media (min-width: 768px){
+   .contenido-nosotros{
+       display: grid;
+       grid-template-columns: repeat(2,1fr);
+       gap: 2rem;
+   }
+}
+.nosotros-img{
+    width: 100%;
+    max-height: 40rem;
+}
+
+
+/** Formulario **/
+.formulario{
+    margin-bottom: 35rem;
+}
+.formulario label{
+    font-weight: var(--bold);
+    text-transform: uppercase;
+    display: block;
+}
+.formulario input:not([type="submit"]),textarea,select{
+    padding: 1rem;
+    display: block;
+    width: 100%;
+    background-color: white;
+    border: 1px solid var(--gris);
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+}
+.forma-ingreso{
+    max-width: 40rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
