@@ -20,7 +20,7 @@
         <section class="contenedor">
             <h1 class="centrado">Log In</h1>
 
-            <form action="/Admin/LoginServlet" method="POST" class="formulario">
+            <form action="/CitasMedicas/LoginServlet" method="POST" class="formulario">
                 <fieldset>
                     <label for="id">ID del Usuario</label>
                     <input type="text" name="id" placeholder="ID del Usuario" id="id" value="">

@@ -14,21 +14,21 @@
 
         <div class="contenido-iconos-nosotros">
             <div class="info-iconos">
-                <img src="/img//icono1.svg" alt="icono buscar" loading="lazy">
+                <img src="img//icono1.svg" alt="icono buscar" loading="lazy">
                 <h2>Busca</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis ea nulla consectetur
                     officiis omnis expedita quibusdam tempore accusamus pariatur sapiente, optio quae? Optio,
                     asperiores. Ad facere eum accusamus totam est?</p>
             </div>
             <div class="info-iconos">
-                <img src="/img//icono2.svg" alt="icono agendar" loading="lazy">
+                <img src="img//icono2.svg" alt="icono agendar" loading="lazy">
                 <h2>Agenda</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis ea nulla consectetur
                     officiis omnis expedita quibusdam tempore accusamus pariatur sapiente, optio quae? Optio,
                     asperiores. Ad facere eum accusamus totam est?</p>
             </div>
             <div class="info-iconos">
-                <img src="/img//icono3.svg" alt="icono calificar" loading="lazy">
+                <img src="img//icono3.svg" alt="icono calificar" loading="lazy">
                 <h2>Califica</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis ea nulla consectetur
                     officiis omnis expedita quibusdam tempore accusamus pariatur sapiente, optio quae? Optio,
