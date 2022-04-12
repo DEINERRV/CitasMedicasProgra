@@ -33,7 +33,8 @@ public class UsuarioDAO {
                 us.setCorreo(rs.getString("correo"));
             }//fin while
             
-        } catch (Exception e) {
+        } 
+        catch (Exception e) {
         }
         
         return us;
@@ -45,7 +46,8 @@ public class UsuarioDAO {
             con = cn.getConexion();
             ps = con.prepareStatement(sql);
             ps.executeUpdate();
-        } catch (Exception e) {
+        } 
+        catch (Exception e) {
         }
     }
     
@@ -61,10 +63,33 @@ public class UsuarioDAO {
             ps.executeUpdate();
             return true;
             
-        } catch (SQLException e) {
+        } 
+        catch (SQLException e) {
         }
         
         return false;
     }
     
+    public boolean agregar(Usuario us){
+        String sql = "INSERT INTO usuario(id,nombre,contrasena,tipo,telefono,correo)"+
+        "VALUES(?,?,?,?,?,?)";
+        
+        try{
+            con = cn.getConexion();
+            ps = con.prepareStatement(sql);
+            ps.setObject(0, us.getId());
+            ps.setObject(1, us.getNombre());
+            ps.setObject(2, us.getContrasena());
+            ps.setObject(3, us.getTipo());
+            ps.setObject(4, us.getTelefono());
+            ps.setObject(5, us.getCorreo());
+            rs = ps.executeQuery();
+        }
+        catch(Exception e){ 
+            return false;   
+        }
+        
+        return true;
+        
+    }
 }
