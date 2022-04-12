@@ -1,7 +1,9 @@
 package ModeloDAO;
 
 import Config.Conexion;
+import Modelo.Ciudad;
 import Modelo.Doctor;
+import Modelo.Especialidad;
 import Modelo.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,11 +20,8 @@ public class DoctorDAO {
     ResultSet rs;
     Doctor doc = new Doctor();
 
-    public List listar(String estado) {
+    private List listar(String sql) {
         ArrayList<Doctor> list = new ArrayList<>();
-        String sql = "SELECT * FROM doctor,especialidad,ciudad\n"
-                + "WHERE  especialidad.id = doctor.id_especialidad"
-                + " and ciudad.id = doctor.id_ciudad and doctor.estado = " + estado + ";";
 
         try {
             con = cn.getConexion();
@@ -31,17 +30,17 @@ public class DoctorDAO {
             while (rs.next()) {
                 Doctor docAux = new Doctor();
 
-                Usuario us = new UsuarioDAO().buscar(rs.getInt("id"));
+                Usuario us = new UsuarioDAO().buscar(rs.getInt("id_usuario"));
+                Especialidad esp = new EspecialidadDAO().buscar(rs.getInt("id_especialidad"));
+                Ciudad ciu = new CiudadDAO().buscar(rs.getInt("id_ciudad"));
+
                 docAux.setUsuario(us);
+                docAux.setEspecialidad(esp);
+                docAux.setCiudad(ciu);
 
                 docAux.setPrecio(rs.getInt("precio"));
                 docAux.setTiempo_cita(rs.getInt("tiempo_cita"));
                 docAux.setEstado(rs.getInt("estado"));
-                docAux.setEspecialidad(rs.getString("especialidad.nombre"));
-                docAux.setId_especialidad(rs.getInt("id_especialidad"));
-                docAux.setCiudad(rs.getString("ciudad.nombre"));
-                docAux.setId_ciudad(rs.getInt("id_ciudad"));
-                
 
                 list.add(docAux);
             }//fin While
@@ -51,6 +50,20 @@ public class DoctorDAO {
 
         return list;
     }
+    
+    public List listarXespecialidad(int id_esp){
+        String sql = "SELECT * FROM doctor WHERE id_especialidad="+id_esp+";";
+        return this.listar(sql);
+    }
+    public List listarXciudad(int id_ciudad){
+        String sql = "SELECT * FROM doctor WHERE id_ciudad="+id_ciudad+";";
+        return this.listar(sql);
+    }
+    public List listarXestado(int estado){
+        String sql = "SELECT * FROM doctor WHERE estado="+estado+";";
+        return this.listar(sql);
+    }
+    
 
     public Doctor buscar(int id) {
         String sql = "SELECT FROM doctor WHERE id=" + id + ";";
@@ -63,16 +76,17 @@ public class DoctorDAO {
             while (rs.next()) {
                 doc = new Doctor();
 
-                Usuario us = new UsuarioDAO().buscar(id);
+                Usuario us = new UsuarioDAO().buscar(rs.getInt("id"));
+                Especialidad esp = new EspecialidadDAO().buscar(rs.getInt("id_especialidad"));
+                Ciudad ciu = new CiudadDAO().buscar(rs.getInt("id_ciudad"));
+
                 doc.setUsuario(us);
+                doc.setEspecialidad(esp);
+                doc.setCiudad(ciu);
 
                 doc.setPrecio(rs.getInt("precio"));
                 doc.setTiempo_cita(rs.getInt("tiempo_cita"));
                 doc.setEstado(rs.getInt("estado"));
-                doc.setEspecialidad(rs.getString("especialidad.nombre"));
-                doc.setId_especialidad(rs.getInt("id_especialidad"));
-                doc.setCiudad(rs.getString("ciudad.nombre"));
-                doc.setId_ciudad(rs.getInt("id_ciudad"));
             }//fin while
 
         } catch (Exception e) {
@@ -81,40 +95,69 @@ public class DoctorDAO {
         return doc;
     }
 
-    public void eliminar(int id){
+    public void eliminar(int id) {
         String sql = "DELETE FROM doctor WHERE id=" + id + ";";
         try {
             con = cn.getConexion();
             ps = con.prepareStatement(sql);
             ps.executeUpdate();
-            
+
             UsuarioDAO usDAO = new UsuarioDAO();
-            usDAO.eliminar(id);      
+            usDAO.eliminar(id);
         } catch (SQLException e) {
         }
     }
-    
-    public boolean editar(Doctor doc){
-            String sql = "UPDATE doctor set id_usuario"+doc.getUsuario().getId()+
-            ",precio="+doc.getPrecio()+",tiempo_cita="+doc.getTiempo_cita()+
-            ",estado="+doc.getEstado()+",id_especialidad="+doc.getId_especialidad()+
-            "id_ciudad="+doc.getId_ciudad()+" WHERE id_usuario="+doc.getUsuario().getId()+
-            ";";
-        
-        try{
+
+    public boolean editar(Doctor doc) {
+        String sql = "UPDATE doctor SET id_usuario=?, precio=?,tiempo_cita=?, estado=?,"
+                + "id_especialidad=?, id_ciudad=? WHERE id_usuario=?;";
+
+        try {
             con = cn.getConexion();
             ps = con.prepareStatement(sql);
-            ps.executeUpdate();
+            ps.setObject(0, doc.getUsuario().getId());
+            ps.setObject(1, doc.getPrecio());
+            ps.setObject(2, doc.getTiempo_cita());
+            ps.setObject(3, doc.getEstado());
+            ps.setObject(4, doc.getEspecialidad().getId());
+            ps.setObject(5, doc.getCiudad().getId());
+            ps.setObject(6, doc.getUsuario().getId());
             
+            ps.executeUpdate();
+
             UsuarioDAO usDAO = new UsuarioDAO();
             usDAO.editar(doc.getUsuario());
-            
+
             return true;
-            
+
         } catch (SQLException e) {
         }
-        
+
         return false;
     }
     
+    public boolean agregar(Doctor doc){
+        String sql = "INSERT INTO doctor(id_usuario,precio,tiempo_cita, estado,"
+                + "id_especialidad,id_ciudad) VALUES(?,?,?,?,?,?);";
+
+        try {
+            UsuarioDAO usDAO = new UsuarioDAO();
+            usDAO.agregar(doc.getUsuario());
+            
+            con = cn.getConexion();
+            ps = con.prepareStatement(sql);
+            ps.setObject(0, doc.getUsuario().getId());
+            ps.setObject(1, doc.getPrecio());
+            ps.setObject(2, doc.getTiempo_cita());
+            ps.setObject(3, doc.getEstado());
+            ps.setObject(4, doc.getEspecialidad().getId());
+            ps.setObject(5, doc.getCiudad().getId());
+            rs = ps.executeQuery();
+            
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+
 }
