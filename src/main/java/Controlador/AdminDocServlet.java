@@ -23,10 +23,10 @@ public class AdminDocServlet extends HttpServlet {
         accion = request.getParameter("accion");
         switch(accion){
             case "listar": 
-                viewUrl = this.listarDocs(request,"1");
+                viewUrl = this.listarDocs(request,1,"/admin/doc/listar.jsp");
                 break;
             case "porAceptar": 
-                viewUrl = this.listarDocs(request,"0");
+                viewUrl = this.listarDocs(request,0,"/admin/doc/accept.jsp");
                 viewUrl = "/admin/doc/accept.jsp";
                 break;
         }
@@ -34,11 +34,11 @@ public class AdminDocServlet extends HttpServlet {
         request.getRequestDispatcher(viewUrl).forward( request, response);
     }
     
-    private String listarDocs(HttpServletRequest request,String estado){
+    private String listarDocs(HttpServletRequest request,int estado,String url){
         try{
-            List<Doctor> doctores = new DoctorDAO().listar(estado);
+            List<Doctor> doctores = new DoctorDAO().listarXestado(estado);
             request.setAttribute("doctores",doctores);
-            return "/admin/doc/listar.jsp";
+            return url;
         }
         catch(Exception e){
             return "/index.jsp";
