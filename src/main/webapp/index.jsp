@@ -43,7 +43,7 @@
         <div>
             <h2>Estas Buscando un Doctor?</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias reiciendis dicta, repellendus impedit aut accusantium excepturi! Provident ad ullam ducimus amet, error quis? Animi labore delectus incidunt illo, culpa similique.</p>
-            <a class="inline-block boton" href="doctores.html">Ver Doctores</a>
+            <a class="inline-block boton" href="#">Ver Doctores</a>
         </div>
         <div>
             <img src="img/medicos.webp" alt="imagen medicos">
@@ -54,7 +54,7 @@
     <section class="seccion imagen-contacto">
         <h2>Eres Doctor y quieres formar parte de esta Plataforma?</h2>
         <p>Llena el formulario de registro y un asesor se pondra en contacto contigo a la brevedad</p>
-        <a class="boton" href="signin.html">Sign In</a>
+        <a class="boton" href="${pageContext.request.contextPath}/doc/signIn.html">Sign In</a>
     </section>
 
 
