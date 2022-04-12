@@ -58,6 +58,9 @@ a{ text-decoration: none; }
 .padding1{
     padding: 1rem;
 }
+.margen-botton-35{
+    margin-bottom: 35rem;
+}
 .boton{
     display: block;
     background-color: black;
@@ -278,9 +281,6 @@ a{ text-decoration: none; }
 
 
 /** Formulario **/
-.formulario{
-    margin-bottom: 35rem;
-}
 .formulario label{
     font-weight: var(--bold);
     text-transform: uppercase;
