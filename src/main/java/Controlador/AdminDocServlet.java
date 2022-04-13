@@ -31,6 +31,9 @@ public class AdminDocServlet extends HttpServlet {
             case "aceptar":
                 viewUrl = this.aceptar(request);
                 break;
+            case "denegar":
+                viewUrl = this.denegar(request);
+                break;
         }
         
         request.getRequestDispatcher(viewUrl).forward( request, response);
@@ -54,6 +57,18 @@ public class AdminDocServlet extends HttpServlet {
             doc.setEstado(1);
             docDAO.editar(doc);
             return this.listarDocs(request, 0, "/admin/doc/accept.jsp");
+        }
+        catch(Exception e){
+            return "/comun/Error.jsp";
+        }
+    }
+    
+    
+     private String denegar(HttpServletRequest request){
+        try{
+            DoctorDAO docDAO = new DoctorDAO();
+            docDAO.eliminar(Integer.parseInt(request.getParameter("us-id")));
+            return this.listarDocs(request,0,"/admin/doc/accept.jsp");
         }
         catch(Exception e){
             return "/comun/Error.jsp";
