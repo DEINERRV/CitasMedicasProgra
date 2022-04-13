@@ -96,11 +96,11 @@ public class DoctorDAO {
     }
 
     public void eliminar(int id) {
-        String sql = "DELETE * FROM doctor WHERE id_usuario=" + id + ";";
+        String sql = "DELETE FROM doctor WHERE id_usuario=" + id + ";";
         try {
             con = cn.getConexion();
             ps = con.prepareStatement(sql);
-            ps.executeUpdate();
+            ps.execute();
 
             UsuarioDAO usDAO = new UsuarioDAO();
             usDAO.eliminar(id);
