@@ -77,12 +77,12 @@ public class UsuarioDAO {
         try{
             con = cn.getConexion();
             ps = con.prepareStatement(sql);
-            ps.setObject(0, us.getId());
-            ps.setObject(1, us.getNombre());
-            ps.setObject(2, us.getContrasena());
-            ps.setObject(3, us.getTipo());
-            ps.setObject(4, us.getTelefono());
-            ps.setObject(5, us.getCorreo());
+            ps.setInt(1, us.getId());
+            ps.setString(2, us.getNombre());
+            ps.setString(3, us.getContrasena());
+            ps.setInt(4, us.getTipo());
+            ps.setString(5, us.getTelefono());
+            ps.setString(6, us.getCorreo());
             rs = ps.executeQuery();
         }
         catch(Exception e){ 
