@@ -41,7 +41,7 @@ public class UsuarioDAO {
     }
 
     public void eliminar(int id) {
-        String sql = "DELETE FROM usuario WHERE id=" + id + ";";
+        String sql = "DELETE * FROM usuario WHERE id=" + id + ";";
         try {
             con = cn.getConexion();
             ps = con.prepareStatement(sql);
