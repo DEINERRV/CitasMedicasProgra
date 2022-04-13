@@ -66,7 +66,7 @@ public class DoctorDAO {
     
 
     public Doctor buscar(int id) {
-        String sql = "SELECT FROM doctor WHERE id=" + id + ";";
+        String sql = "SELECT * FROM doctor WHERE id_usuario=" + id + ";";
         Doctor doc = null;
         try {
             con = cn.getConexion();
@@ -76,7 +76,7 @@ public class DoctorDAO {
             while (rs.next()) {
                 doc = new Doctor();
 
-                Usuario us = new UsuarioDAO().buscar(rs.getInt("id"));
+                Usuario us = new UsuarioDAO().buscar(rs.getInt("id_usuario"));
                 Especialidad esp = new EspecialidadDAO().buscar(rs.getInt("id_especialidad"));
                 Ciudad ciu = new CiudadDAO().buscar(rs.getInt("id_ciudad"));
 
@@ -96,7 +96,7 @@ public class DoctorDAO {
     }
 
     public void eliminar(int id) {
-        String sql = "DELETE FROM doctor WHERE id=" + id + ";";
+        String sql = "DELETE * FROM doctor WHERE id_usuario=" + id + ";";
         try {
             con = cn.getConexion();
             ps = con.prepareStatement(sql);
@@ -115,13 +115,13 @@ public class DoctorDAO {
         try {
             con = cn.getConexion();
             ps = con.prepareStatement(sql);
-            ps.setObject(0, doc.getUsuario().getId());
-            ps.setObject(1, doc.getPrecio());
-            ps.setObject(2, doc.getTiempo_cita());
-            ps.setObject(3, doc.getEstado());
-            ps.setObject(4, doc.getEspecialidad().getId());
-            ps.setObject(5, doc.getCiudad().getId());
-            ps.setObject(6, doc.getUsuario().getId());
+            ps.setInt(1, doc.getUsuario().getId());
+            ps.setInt(2, doc.getPrecio());
+            ps.setInt(3, doc.getTiempo_cita());
+            ps.setInt(4, doc.getEstado());
+            ps.setInt(5, doc.getEspecialidad().getId());
+            ps.setInt(6, doc.getCiudad().getId());
+            ps.setInt(7, doc.getUsuario().getId());
             
             ps.executeUpdate();
 
@@ -146,12 +146,12 @@ public class DoctorDAO {
             
             con = cn.getConexion();
             ps = con.prepareStatement(sql);
-            ps.setObject(0, doc.getUsuario().getId());
-            ps.setObject(1, doc.getPrecio());
-            ps.setObject(2, doc.getTiempo_cita());
-            ps.setObject(3, doc.getEstado());
-            ps.setObject(4, doc.getEspecialidad().getId());
-            ps.setObject(5, doc.getCiudad().getId());
+            ps.setInt(1, doc.getUsuario().getId());
+            ps.setInt(2, doc.getPrecio());
+            ps.setInt(3, doc.getTiempo_cita());
+            ps.setInt(4, doc.getEstado());
+            ps.setInt(5, doc.getEspecialidad().getId());
+            ps.setInt(6, doc.getCiudad().getId());
             rs = ps.executeQuery();
             
         } catch (Exception e) {
