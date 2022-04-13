@@ -27,7 +27,7 @@
             <a href="AdminDocServlet?accion=listar">Doctores</a>
             <a href="AdminDocServlet?accion=porAceptar">Por Aceptar</a>
             <a href="#">Ciudades</a>
-            <a href="#">Especialidades</a>
+            <a href="AdminEspecialidadServlet?accion=listar">Especialidades</a>
             <% break;
                 }%>
                 <a href="#"><%= usuario.getNombre() %> / <%= tipoString %></a>
