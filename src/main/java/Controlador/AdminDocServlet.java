@@ -27,7 +27,9 @@ public class AdminDocServlet extends HttpServlet {
                 break;
             case "porAceptar": 
                 viewUrl = this.listarDocs(request,0,"/admin/doc/accept.jsp");
-                viewUrl = "/admin/doc/accept.jsp";
+                break;
+            case "aceptar":
+                viewUrl = this.aceptar(request);
                 break;
         }
         
@@ -44,6 +46,21 @@ public class AdminDocServlet extends HttpServlet {
             return "/index.jsp";
         }
     }
+    
+    private String aceptar(HttpServletRequest request){
+        try{
+            DoctorDAO docDAO = new DoctorDAO();
+            Doctor doc = docDAO.buscar(Integer.parseInt(request.getParameter("us-id")));
+            doc.setEstado(1);
+            docDAO.editar(doc);
+            return this.listarDocs(request, 0, "/admin/doc/accept.jsp");
+        }
+        catch(Exception e){
+            return "/comun/Error.jsp";
+        }
+    }
+    
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
