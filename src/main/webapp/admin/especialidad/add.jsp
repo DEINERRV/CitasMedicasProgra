@@ -21,7 +21,7 @@
         <section class="contenedor">
             <h1 class="centrado">Agregar Especialidad</h1>
 
-            <form action="/A/AdminEspecialidadServlet" method="POST" class="formulario">
+            <form action="/CitasMedicas/AdminEspecialidadServlet" method="POST" class="formulario">
                 <fieldset>
                     <label for="nombre">Nombre de la Especialidad</label>
                     <input type="text" name="nombre" placeholder="Nombre de la Especialidad" id="Especialidad" value="">
