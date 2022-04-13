@@ -38,14 +38,13 @@ public class EspecialidadDAO {
     
     
     public boolean agregar(Especialidad esp){
-        String sql = "INSERT INTO especialidad(id,nombre) VALUES(?,?);";
+        String sql = "INSERT INTO especialidad(nombre) VALUES(?);";
 
         try {
             con = cn.getConexion();
             ps = con.prepareStatement(sql);
-            ps.setObject(0, esp.getId());
-            ps.setObject(1, esp.getNombre());
-            rs = ps.executeQuery();
+            ps.setString(1, esp.getNombre());
+            ps.execute();
         } catch (Exception e) {
             return false;
         }
@@ -60,6 +59,27 @@ public class EspecialidadDAO {
         try {
             con = cn.getConexion();
             ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            if(rs.next()) {
+                esp = new Especialidad();
+                esp.setId(rs.getInt("id"));
+                esp.setNombre(rs.getString("nombre"));
+            }//fin While
+        } catch (Exception e) {
+        }
+        
+        return esp;
+    }
+    
+    
+    public Especialidad buscarNom(String nombre){
+        String sql = "SELECT * FROM especialidad WHERE nombre=?;";
+        Especialidad esp = null;
+        
+        try {
+            con = cn.getConexion();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, nombre);
             rs = ps.executeQuery();
             if(rs.next()) {
                 esp = new Especialidad();
