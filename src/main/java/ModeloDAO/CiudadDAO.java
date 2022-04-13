@@ -38,14 +38,13 @@ public class CiudadDAO {
     
     
     public boolean agregar(Ciudad ciudad){
-        String sql = "INSERT INTO ciudad(id,nombre) VALUES(?,?);";
+        String sql = "INSERT INTO ciudad(nombre) VALUES(?);";
 
         try {
             con = cn.getConexion();
             ps = con.prepareStatement(sql);
-            ps.setObject(0, ciudad.getId());
-            ps.setObject(1, ciudad.getNombre());
-            rs = ps.executeQuery();
+            ps.setString(1, ciudad.getNombre());
+            ps.execute();
         } catch (Exception e) {
             return false;
         }
@@ -60,6 +59,26 @@ public class CiudadDAO {
         try {
             con = cn.getConexion();
             ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            if(rs.next()) {
+                ciudad = new Ciudad();
+                ciudad.setId(rs.getInt("id"));
+                ciudad.setNombre(rs.getString("nombre"));
+            }//fin While
+        } catch (Exception e) {
+        }
+        
+        return ciudad;
+    }
+    
+    public Ciudad buscarNom(String nombre){
+        String sql = "SELECT * FROM ciudad WHERE nombre=?;";
+        Ciudad ciudad = null;
+        
+        try {
+            con = cn.getConexion();
+            ps = con.prepareStatement(sql);
+            ps.setString(1,nombre);
             rs = ps.executeQuery();
             if(rs.next()) {
                 ciudad = new Ciudad();
