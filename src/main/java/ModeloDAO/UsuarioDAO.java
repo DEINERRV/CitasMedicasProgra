@@ -83,7 +83,7 @@ public class UsuarioDAO {
             ps.setInt(4, us.getTipo());
             ps.setString(5, us.getTelefono());
             ps.setString(6, us.getCorreo());
-            rs = ps.executeQuery();
+            ps.execute();
         }
         catch(Exception e){ 
             return false;   

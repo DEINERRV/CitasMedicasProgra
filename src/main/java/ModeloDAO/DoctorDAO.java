@@ -152,7 +152,7 @@ public class DoctorDAO {
             ps.setInt(4, doc.getEstado());
             ps.setInt(5, doc.getEspecialidad().getId());
             ps.setInt(6, doc.getCiudad().getId());
-            rs = ps.executeQuery();
+            ps.execute();
             
         } catch (Exception e) {
             return false;
