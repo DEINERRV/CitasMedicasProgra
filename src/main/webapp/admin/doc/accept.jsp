@@ -11,7 +11,7 @@
     <body>
         <%@ include file="/comun/header.jsp" %>
         
-        <h1>Hello World!</h1>
+        <h1>Solicitudes de Doctores</h1>
 
         <main class="contenedor">
             <% for (Doctor d : doctores) { %>
