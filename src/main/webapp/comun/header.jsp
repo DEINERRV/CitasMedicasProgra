@@ -36,7 +36,7 @@
             <a href="#">Nosotros</a>
             <a href="#">Doctores</a>
             <a href="${pageContext.request.contextPath}/login/logIn.jsp">Log In</a>
-            <a href="${pageContext.request.contextPath}/paciente/signIn.html">Sign In</a>
+            <a href="${pageContext.request.contextPath}/paciente/signIn.jsp">Sign In</a>
             <% }%>
             
     </nav>
