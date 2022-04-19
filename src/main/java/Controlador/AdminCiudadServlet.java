@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package Controlador;
 
 import Modelo.Ciudad;
@@ -16,11 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author deine
- */
-@WebServlet(name = "adminCiudadServlet", urlPatterns = {"/adminCiudadServlet"})
+@WebServlet(name = "AdminCiudadServlet", urlPatterns = {"/AdminCiudadServlet"})
 public class AdminCiudadServlet extends HttpServlet {
 
     /**
@@ -34,6 +26,7 @@ public class AdminCiudadServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         String viewUrl = "";
         String accion = "";
         accion = request.getParameter("accion");
