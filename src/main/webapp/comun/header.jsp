@@ -15,7 +15,7 @@
                     switch (tipo) {
                         case 1:
                             tipoString = "Paciente";//Paciente %> 
-            <a href="#">Doctores</a>
+            <a href="PacDocsServlet?accion=show">Doctores</a>
             <a href="#">Mis Citas</a>
             <% break;
                 case 2: //Doctor 
@@ -26,7 +26,7 @@
                     tipoString = "Admin";%>
             <a href="AdminDocServlet?accion=listar">Doctores</a>
             <a href="AdminDocServlet?accion=porAceptar">Por Aceptar</a>
-            <a href="#">Ciudades</a>
+            <a href="AdminCiudadServlet?accion=listar">Ciudades</a>
             <a href="AdminEspecialidadServlet?accion=listar">Especialidades</a>
             <% break;
                 }%>
@@ -34,7 +34,7 @@
                 <a href="LoginServlet?accion=logout">Log Out</a>
             <% } else { %>
             <a href="#">Nosotros</a>
-            <a href="#">Doctores</a>
+            <a href="PacDocsServlet?accion=show">Doctores</a>
             <a href="${pageContext.request.contextPath}/login/logIn.jsp">Log In</a>
             <a href="${pageContext.request.contextPath}/paciente/signIn.jsp">Sign In</a>
             <% }%>

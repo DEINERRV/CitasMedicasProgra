@@ -52,6 +52,10 @@ a{ text-decoration: none; }
     display: flex;
     justify-content: right;
 }
+.alinear-izquierda{
+    display:flex;
+    justify-content:left;
+}
 .inline-block{
     display: inline-block;
 }
@@ -220,6 +224,18 @@ a{ text-decoration: none; }
     padding: 1rem;
     width: 100%;
 }
+.dia-doctor ul{
+    overflow: hidden;
+    overflow-y: scroll;
+    list-style-type: none;
+    padding: 0;
+    max-height: 20rem;
+}
+.dia-doctor li{
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+}
+
 
 /** Horario extenso **/
 .horario-extenso{
