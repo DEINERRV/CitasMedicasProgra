@@ -1,4 +1,7 @@
+<%@page import="Modelo.Doctor"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% Doctor doc = (Doctor) request.getAttribute("doc"); %>
+
 
 <!DOCTYPE html>
 <html>
@@ -11,17 +14,18 @@
             <img class="foto-doctor" loading="lazy" src="../img/blog1.jpg" alt="anuncio">
 
             <div class="contenido-doctor">
-                <h3>Jose Ramirez Cerdas</h3>
-                <p class="precio">$300</p>
-                <p>San Jose</p>
-                <p>Ortopedico</p>
-                <p>15:30</p>
+                <h3><%= doc.getUsuario().getNombre() %></h3>
+                <p class="precio">$<%= doc.getPrecio() %></p>
+                <p><%= doc.getCiudad().getNombre() %></p>
+                <p><%= doc.getEspecialidad().getNombre() %></p>
+                <p><%= request.getAttribute("dia") %></p>
+                <p><%= request.getAttribute("hora") %></p>
             </div>
             <div class="inline-block padding1">
-                <a class="boton" href="#">Confirmar Cita</a>
+                <a class="boton" href="PacReservarServlet?accion=reservar&id-doc=<%=doc.getUsuario().getId()%>&dia=<%=request.getAttribute("dia")%>&hora=<%= request.getAttribute("hora") %>">Confirmar Cita</a>
             </div>
             <div class="inline-block padding1">
-                <a class="boton" href="#">Cancelar</a>
+                <a class="boton" href="PacReservarServlet?accion=cancelar">Cancelar</a>
             </div>
         </div>
 
