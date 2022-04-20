@@ -21,6 +21,7 @@
                 case 2: //Doctor 
                     tipoString = "Doctor";%>
             <a href="#">Citas</a>
+            <a href="DocPerfilServlet?accion=show">Mi Perfil</a>
             <% break;
                 case 3: //Admin 
                     tipoString = "Admin";%>
@@ -30,7 +31,6 @@
             <a href="AdminEspecialidadServlet?accion=listar">Especialidades</a>
             <% break;
                 }%>
-                <a href="#"><%= usuario.getNombre() %> / <%= tipoString %></a>
                 <a href="LoginServlet?accion=logout">Log Out</a>
             <% } else { %>
             <a href="#">Nosotros</a>

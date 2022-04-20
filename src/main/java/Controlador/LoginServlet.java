@@ -102,7 +102,7 @@ public class LoginServlet extends HttpServlet {
                 case 2:
                     Doctor doc = new DoctorDAO().buscar(us.getId());
                     session.setAttribute("doc", doc);
-                    viewUrl = "/doc/perfil.jsp";
+                    viewUrl = "DocPerfilServlet?accion=show";
                     break;
                 case 3:
                     viewUrl = "/admin/index.jsp";
