@@ -52,7 +52,7 @@ public class UsuarioDAO {
     }
     
     public boolean editar(Usuario us){
-        String sql = "UPDATE usuario set id"+us.getId()+",nombre='"+
+        String sql = "UPDATE usuario set id="+us.getId()+",nombre='"+
         us.getNombre()+"',contrasena='"+us.getContrasena()+"',tipo="+
         us.getTipo()+",telefono='"+us.getTelefono()+"',correo='"+
         us.getCorreo()+"' WHERE id="+us.getId()+";";
