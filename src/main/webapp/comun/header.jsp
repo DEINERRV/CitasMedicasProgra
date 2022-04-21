@@ -21,20 +21,21 @@
                 case 2: //Doctor 
                     tipoString = "Doctor";%>
             <a href="#">Citas</a>
-            <a href="DocPerfilServlet?accion=show">Mi Perfil</a>
+            <a href="/CitasMedicas/DocPerfilServlet?accion=show">Mi Perfil</a>
+            <a href="${pageContext.request.contextPath}/doc/horario.jsp">Mi Horario</a>
             <% break;
                 case 3: //Admin 
                     tipoString = "Admin";%>
-            <a href="AdminDocServlet?accion=listar">Doctores</a>
-            <a href="AdminDocServlet?accion=porAceptar">Por Aceptar</a>
-            <a href="AdminCiudadServlet?accion=listar">Ciudades</a>
-            <a href="AdminEspecialidadServlet?accion=listar">Especialidades</a>
+            <a href="/CitasMedicas/AdminDocServlet?accion=listar">Doctores</a>
+            <a href="/CitasMedicas/AdminDocServlet?accion=porAceptar">Por Aceptar</a>
+            <a href="/CitasMedicas/AdminCiudadServlet?accion=listar">Ciudades</a>
+            <a href="/CitasMedicas/AdminEspecialidadServlet?accion=listar">Especialidades</a>
             <% break;
                 }%>
-                <a href="LoginServlet?accion=logout">Log Out</a>
+                <a href="/CitasMedicas/LoginServlet?accion=logout">Log Out</a>
             <% } else { %>
             <a href="#">Nosotros</a>
-            <a href="PacDocsServlet?accion=show">Doctores</a>
+            <a href="/CitasMedicas/PacDocsServlet?accion=show">Doctores</a>
             <a href="${pageContext.request.contextPath}/login/logIn.jsp">Log In</a>
             <a href="${pageContext.request.contextPath}/paciente/signIn.jsp">Sign In</a>
             <% }%>

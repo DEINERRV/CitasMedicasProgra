@@ -62,7 +62,7 @@ public class DiaDAO {
      
      
     public void eliminar(int id_doc) {
-        String sql = "DELETE * FROM dia WHERE id_doc=" + id_doc + ";";
+        String sql = "DELETE FROM dia WHERE id_doc=" + id_doc + ";";
         try {
             con = cn.getConexion();
             ps = con.prepareStatement(sql);

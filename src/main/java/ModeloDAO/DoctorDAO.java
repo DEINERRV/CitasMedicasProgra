@@ -92,10 +92,13 @@ public class DoctorDAO {
                 Usuario us = new UsuarioDAO().buscar(rs.getInt("id_usuario"));
                 Especialidad esp = new EspecialidadDAO().buscar(rs.getInt("id_especialidad"));
                 Ciudad ciu = new CiudadDAO().buscar(rs.getInt("id_ciudad"));
-
+                List<Dia> dias = new DiaDAO().listar(rs.getInt("id_usuario"));
+                Horario hor = new Horario(dias);
+                
                 doc.setUsuario(us);
                 doc.setEspecialidad(esp);
                 doc.setCiudad(ciu);
+                doc.setHorario(hor);
             }//fin while
 
         } catch (Exception e) {
