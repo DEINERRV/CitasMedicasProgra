@@ -20,7 +20,7 @@
             <% break;
                 case 2: //Doctor 
                     tipoString = "Doctor";%>
-            <a href="#">Citas</a>
+            <a href="/CitasMedicas/DocCitasServlet?accion=show">Citas</a>
             <a href="/CitasMedicas/DocPerfilServlet?accion=show">Mi Perfil</a>
             <a href="${pageContext.request.contextPath}/doc/horario.jsp">Mi Horario</a>
             <% break;
