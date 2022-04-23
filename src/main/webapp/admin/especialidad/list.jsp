@@ -6,7 +6,7 @@
 
 <!DOCTYPE html>
 <html>
-    <<%@ include file="/comun/head.jsp" %>
+    <%@ include file="/comun/head.jsp" %>
     <body>
         <%@ include file="/comun/header.jsp" %>
         
