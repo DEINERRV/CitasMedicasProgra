@@ -5,6 +5,8 @@ import Modelo.Usuario;
 import ModeloDAO.CitaDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,6 +37,9 @@ public class DocCitasServlet extends HttpServlet {
             case "show": 
                 viewUrl = this.show(request);
                 break;
+            case "cancelar": 
+                viewUrl = this.cancelar(request);
+                break;
         }
         
         request.getRequestDispatcher(viewUrl).forward( request, response);
@@ -54,6 +59,20 @@ public class DocCitasServlet extends HttpServlet {
         }
     }
     
+    
+    private String cancelar(HttpServletRequest request){
+        try{
+            CitaDAO citaDAO = new CitaDAO();
+            Usuario us = (Usuario) request.getSession().getAttribute("usuario");
+            LocalDate dia = LocalDate.parse(request.getParameter("dia"));
+            LocalTime hora = LocalTime.parse(request.getParameter("hora"));
+            citaDAO.eliminar(us.getId(), dia, hora);
+            return this.show(request);
+        }
+        catch(Exception e){
+            return "/index.jsp";
+        }
+    }
     
     
     

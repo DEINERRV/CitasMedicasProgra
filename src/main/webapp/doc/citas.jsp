@@ -40,7 +40,7 @@
                     
                     <% if(LocalDate.now().isAfter(c.getDia())){%>
                     <div class="inline-block padding1">
-                        <a class="boton" href="#">Cancelar Cita</a>
+                        <a class="boton" href="DocCitasServlet?accion=cancelar&dia=<%=c.getDia()%>&hora=<%=c.getHora()%>">Cancelar Cita</a>
                     </div>    
                     <%}%>
 

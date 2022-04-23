@@ -86,5 +86,19 @@ public class CitaDAO {
         return this.listar(sql);
     }
     
+    
+    public void eliminar(int id_doc,LocalDate dia,LocalTime hora){
+                String sql = "DELETE FROM cita WHERE id_doc=? AND fecha LIKE ? AND hora LIKE ?;";
+        try {
+            con = cn.getConexion();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, id_doc);
+            ps.setDate(2, Date.valueOf(dia));
+            ps.setTime(3, Time.valueOf(hora));
+            ps.execute();
+        } catch (SQLException e) {
+        }
+    }
+    
 
 }
