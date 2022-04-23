@@ -16,7 +16,8 @@
             <div>
                 <% for(Cita c:citas){ %>
                 <div class="doctor ">
-                    <img class="foto-doctor" loading="lazy" src="../img/blog1.jpg" alt="anuncio">
+                    <img class="foto-doctor" loading="lazy" src="${pageContext.request.contextPath}/img/<%=c.getDoc().getUsuario().getId()%>.jpg" 
+                         onerror="this.src='${pageContext.request.contextPath}/img/noFoto.png';" />
                     
                     <div class="contenido-doctor">
                         <h3><%= c.getDoc().getUsuario().getNombre()%> </h3>
