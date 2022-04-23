@@ -37,6 +37,7 @@ public class Horario {
         boolean flag = true;
         
         if(this.dias.isEmpty()) return diasCitas;
+        if(dia.getDayOfWeek().getValue() > dias.get(dias.size()-1).getId()) flag = false;
         
         while (diasCitas.size() < cant) {
             for (int i = 0; i < dias.size(); i++) {

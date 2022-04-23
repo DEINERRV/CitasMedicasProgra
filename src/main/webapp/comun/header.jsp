@@ -15,8 +15,8 @@
                     switch (tipo) {
                         case 1:
                             tipoString = "Paciente";//Paciente %> 
-            <a href="PacDocsServlet?accion=show">Doctores</a>
-            <a href="#">Mis Citas</a>
+            <a href="/CitasMedicas/PacDocsServlet?accion=show">Doctores</a>
+            <a href="/CitasMedicas/PacCitasServlet?accion=show">Mis Citas</a>
             <% break;
                 case 2: //Doctor 
                     tipoString = "Doctor";%>

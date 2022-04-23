@@ -77,6 +77,10 @@ public class CitaDAO {
         String sql = "SELECT * FROM cita WHERE id_doc="+id_doc+";";
         return this.listar(sql);
     }
+    public List listarXPac(int id_pac){
+        String sql = "SELECT * FROM cita WHERE id_pac="+id_pac+";";
+        return this.listar(sql);
+    }
     public List listarXDocFecha(int id_doc,LocalDate fecha){
         String sql = "SELECT * FROM cita WHERE id_doc="+id_doc+" AND  fecha LIKE '"+Date.valueOf(fecha)+"';";
         return this.listar(sql);

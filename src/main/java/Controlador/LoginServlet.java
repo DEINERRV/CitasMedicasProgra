@@ -97,7 +97,7 @@ public class LoginServlet extends HttpServlet {
             String viewUrl = "";
             switch (us.getTipo()) {
                 case 1:
-                    viewUrl = "/paciente/citas.jsp";
+                    viewUrl = "PacCitasServlet?accion=show";
                     break;
                 case 2:
                     Doctor doc = new DoctorDAO().buscar(us.getId());
