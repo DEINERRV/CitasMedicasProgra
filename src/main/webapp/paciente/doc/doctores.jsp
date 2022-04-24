@@ -45,7 +45,7 @@
             <div class="contenedor-doctores">
                 <% for(Doctor d:doctores){ %>
                 <div class="doctor">
-                    <img class="foto-doctor" loading="lazy" src="${pageContext.request.contextPath}/img/<%=d.getUsuario().getId()%>.jpg" 
+                    <img class="foto-doctor" loading="lazy" src="${pageContext.request.contextPath}/img/<%=d.getUsuario().getId()%>.png" 
                          onerror="this.src='${pageContext.request.contextPath}/img/noFoto.png';" />
 
                     <div class="contenido-doctor">

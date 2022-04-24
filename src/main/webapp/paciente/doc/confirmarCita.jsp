@@ -11,7 +11,8 @@
         <%@ include file="/comun/header.jsp" %>
 
         <div class="doctor contenedor">
-            <img class="foto-doctor" loading="lazy" src="../img/blog1.jpg" alt="anuncio">
+            <img class="foto-doctor" loading="lazy" src="${pageContext.request.contextPath}/img/<%=doc.getUsuario().getId()%>.png" 
+                         onerror="this.src='${pageContext.request.contextPath}/img/noFoto.png';" />
 
             <div class="contenido-doctor">
                 <h3><%= doc.getUsuario().getNombre() %></h3>
