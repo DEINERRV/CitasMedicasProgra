@@ -62,7 +62,7 @@ public class Dia {
                         }
                     }
                     if (!ok) {
-                        slots.add(new Cita(null, null, dia, time));
+                        slots.add(new Cita(null, null, dia, time,""));
                     }
                 }
             } else {
@@ -76,7 +76,7 @@ public class Dia {
                     }
                 }
                 if (!ok) {
-                    slots.add(new Cita(null, null, dia, time));
+                    slots.add(new Cita(null, null, dia, time,""));
                 }
             }
 

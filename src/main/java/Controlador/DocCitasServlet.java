@@ -40,6 +40,9 @@ public class DocCitasServlet extends HttpServlet {
             case "cancelar": 
                 viewUrl = this.cancelar(request);
                 break;
+            case "OK":
+                viewUrl = this.actualizar(request);
+                break;
         }
         
         request.getRequestDispatcher(viewUrl).forward( request, response);
@@ -67,6 +70,22 @@ public class DocCitasServlet extends HttpServlet {
             LocalDate dia = LocalDate.parse(request.getParameter("dia"));
             LocalTime hora = LocalTime.parse(request.getParameter("hora"));
             citaDAO.eliminar(us.getId(), dia, hora);
+            return this.show(request);
+        }
+        catch(Exception e){
+            return "/index.jsp";
+        }
+    }
+    
+    
+    private String actualizar(HttpServletRequest request){
+        try{
+            CitaDAO citaDAO = new CitaDAO();
+            Usuario us = (Usuario) request.getSession().getAttribute("usuario");
+            String nota = request.getParameter("nota");
+            LocalDate dia = LocalDate.parse(request.getParameter("dia"));
+            LocalTime hora = LocalTime.parse(request.getParameter("hora"));
+            citaDAO.editar(us.getId(), dia, hora,nota);
             return this.show(request);
         }
         catch(Exception e){

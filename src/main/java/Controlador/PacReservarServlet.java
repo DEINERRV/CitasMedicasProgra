@@ -78,7 +78,7 @@ public class PacReservarServlet extends HttpServlet {
              Usuario us = (Usuario) request.getSession().getAttribute("usuario");
              LocalDate dia = LocalDate.parse(request.getParameter("dia"));
              LocalTime hora = LocalTime.parse(request.getParameter("hora"));
-             Cita cita = new Cita(doc,us,dia,hora);
+             Cita cita = new Cita(doc,us,dia,hora,"");
              CitaDAO citaDAO = new CitaDAO();
              citaDAO.agregar(cita);
              return "PacCitasServlet?accion=show";

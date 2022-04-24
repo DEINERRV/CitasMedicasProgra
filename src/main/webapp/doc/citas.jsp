@@ -31,7 +31,9 @@
 
                     <div class="formulario"> 
                         <form action="#" >
-                            <textarea id="nota" name="nota" rows="8" cols="50" placeholder="Inserte notas de la cita"></textarea>
+                            <textarea id="nota" name="nota" rows="8" cols="50" placeholder="Inserte notas de la cita"><%=c.getNota()%></textarea>
+                            <input id="dia" name="dia" type="hidden" value="<%=c.getDia()%>">
+                            <input id="hora" name="hora" type="hidden" value="<%=c.getHora()%>">
                             <div class="alinear-derecha">
                                 <input type="submit" class="boton" name="accion" value="OK">
                             </div>

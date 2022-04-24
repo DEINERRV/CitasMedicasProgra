@@ -9,15 +9,17 @@ public class Cita {
     Usuario pac;
     LocalDate dia;
     LocalTime hora;
+    String nota;
 
     public Cita() {
     }
 
-    public Cita(Doctor doc, Usuario pac, LocalDate dia, LocalTime hora) {
+    public Cita(Doctor doc, Usuario pac, LocalDate dia, LocalTime hora,String nota) {
         this.doc = doc;
         this.pac = pac;
         this.dia = dia;
         this.hora = hora;
+        this.nota = nota;
     }
 
     public Doctor getDoc() {
@@ -50,6 +52,14 @@ public class Cita {
 
     public void setHora(LocalTime hora) {
         this.hora = hora;
+    }
+
+    public String getNota() {
+        return nota;
+    }
+
+    public void setNota(String nota) {
+        this.nota = nota;
     }
     
     

@@ -29,9 +29,8 @@
                     </div>
                     
                     <div> 
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis ea nulla consectetur
-                    officiis omnis expedita quibusdam tempore accusamus pariatur sapiente, optio quae? Optio,
-                    asperiores. Ad facere eum accusamus totam est?</p>
+                        <h2>Notas</h2>
+                        <p><%=c.getNota()%></p>
                     </div>
                 </div>
                 <%}%>
