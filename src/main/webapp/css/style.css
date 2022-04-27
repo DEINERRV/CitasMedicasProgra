@@ -274,11 +274,25 @@ a{ text-decoration: none; }
 }
 
 /** Footer **/
-.footer{
-    background-color: black;
-    padding: .5rem;
-    margin-top: 2rem;
+html {
+  min-height: 100%;
+  position: relative;
 }
+body {
+  margin: 0;
+  position:relative;
+  padding-bottom: 13rem;
+  min-height: 100vh;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  padding: .5rem;
+  margin-top: 2rem;
+}
+
 
 /** Nosotros **/
 .contenido-nosotros{

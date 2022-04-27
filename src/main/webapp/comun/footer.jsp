@@ -3,14 +3,14 @@
 
 <footer class="footer">
         <nav class="navegacion">
-            <a href="index.html">
+            <a href="#">
                 <h2 class="logo">Citas<span>Medicas</span></h1>
             </a>
             <div class="navegacion-links">
-                <a href="nosotros.html">Nosotros</a>
-                <a href="doctores.html">Doctores</a>
-                <a href="Log.html">Log In</a>
-                <a href="Sign.html">Sign In</a>
+                <a href="#"><img src="img//icono-facebook.svg" alt="icono facebook" loading="lazy"></a>
+                <a href="#"><img src="img//icono-insta.svg" alt="icono Instagram" loading="lazy"></a>
+                <a href="#"><img src="img//icono-Twitter.svg" alt="icono Twitter" loading="lazy"></a>
+                <a href="#"><img src="img//icono-YT.svg" alt="icono YouTube" loading="lazy"></a>
             </div>
         </nav>
     </footer>
