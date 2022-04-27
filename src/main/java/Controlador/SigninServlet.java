@@ -139,6 +139,8 @@ public class SigninServlet extends HttpServlet {
                 return "index.jsp";
             } else {
                 request.setAttribute("errores", errores);
+                this.saveProgress(request);
+                this.saveProgressDoc(request);
                 return this.show(request);
             }
         } catch (Exception e) {
@@ -180,6 +182,12 @@ public class SigninServlet extends HttpServlet {
         request.setAttribute("nom", nom);
         request.setAttribute("tel", tel);
     }
+    
+    public void saveProgressDoc(HttpServletRequest request) {
+        String idEsp = request.getParameter("especialidad");
+        String idCiu = request.getParameter("ciudad");
+    }
+    
     
     
     
