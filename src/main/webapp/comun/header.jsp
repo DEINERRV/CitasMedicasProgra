@@ -17,6 +17,7 @@
                             tipoString = "Paciente";//Paciente %> 
             <a href="/CitasMedicas/PacDocsServlet?accion=show">Doctores</a>
             <a href="/CitasMedicas/PacCitasServlet?accion=show">Mis Citas</a>
+            <a href="${pageContext.request.contextPath}/paciente/perfil.jsp">Mi Perfil</a>
             <% break;
                 case 2: //Doctor 
                     tipoString = "Doctor";%>
