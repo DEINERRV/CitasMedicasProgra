@@ -11,7 +11,7 @@
         <%@ include file="/comun/header.jsp" %>
         
         <% if(errores!=null){ for(String error:errores){ %>
-        <div class="error"> 
+        <div class="error contenedor"> 
             <p><%= error %></p>
         </div>
         <% }} %>
@@ -23,21 +23,10 @@
             <form action="/CitasMedicas/LoginServlet" method="POST" class="formulario">
                 <fieldset>
                     <label for="id">ID del Usuario</label>
-                    <input type="text" name="id" placeholder="ID del Usuario" id="id" value="">
+                    <input type="text" name="id" placeholder="ID del Usuario" id="id" value="" required>
 
                     <label for="contrasena">Contrasena del Usuario</label>
-                    <input type="password" name="contrasena" placeholder="Contrasena del Usuario" id="contrasena" value="">
-
-                    <div class="forma-ingreso">
-                        <label for="paciente">Paciente</label>
-                        <input name="tipo-ingreso" type="radio" value="paciente" id="paciente">
-
-                        <label for="doctor">Doctor</label>
-                        <input name="tipo-ingreso" type="radio" value="doctor" id="doctor">
-
-                        <label for="admin">Admin</label>
-                        <input name="tipo-ingreso" type="radio" value="admin" id="admin">
-                    </div>
+                    <input type="password" name="contrasena" placeholder="Contrasena del Usuario" id="contrasena" value="" required>
 
                     <input type="submit" class="boton" name="accion" value="login">
                 </fieldset>

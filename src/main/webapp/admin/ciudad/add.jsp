@@ -12,7 +12,7 @@
 
         <% if (errores != null) {
                 for (String error : errores) {%>
-        <div class="error"> 
+        <div class="error contenedor"> 
             <p><%= error%></p>
         </div>
         <% }
@@ -24,7 +24,7 @@
             <form action="/CitasMedicas/AdminCiudadServlet" method="POST" class="formulario">
                 <fieldset>
                     <label for="nombre">Nombre de la Ciudad</label>
-                    <input type="text" name="nombre" placeholder="Nombre de la Ciudad" id="Ciudad" value="">
+                    <input type="text" name="nombre" placeholder="Nombre de la Ciudad" id="Ciudad" value="" required>
 
 
                     <input type="submit" class="boton" name="accion" value="agregar">

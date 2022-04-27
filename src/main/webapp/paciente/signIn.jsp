@@ -10,8 +10,8 @@
 
         <% if (errores != null) {
             for (String error : errores) {%>
-        <div class="error">
-            <p><%= error%></p>
+        <div class="error contenedor">
+            <p>ERROR: <%= error%></p>
         </div>
         <% }
             }%>
@@ -23,19 +23,19 @@
             <form action="/CitasMedicas/SigninServlet" method="POST" class="formulario">
                 <fieldset>
                     <label for="id">ID del Usuario</label>
-                    <input type="text" name="id" placeholder="ID del Usuario" id="id" value="">
+                    <input type="text" name="id" placeholder="ID del Usuario" id="id" value="" required>
 
                     <label for="contrasena">Contrasena del Usuario</label>
-                    <input type="text" name="contrasena" placeholder="Contrasena del Usuario" id="contrasena" value="">
+                    <input type="text" name="contrasena" placeholder="Contrasena del Usuario" id="contrasena" value="" required>
                     
                     <label for="contrasena">Confirmar Contrasena</label>
-                    <input type="text" name="contrasena2" placeholder="Contrasena del Usuario" id="contrasena" value="">
+                    <input type="text" name="contrasena2" placeholder="Contrasena del Usuario" id="contrasena" value="" required>
                     
                     <label for="nombre">Nombre y apellido</label>
-                    <input type="text" name="nombre" placeholder="Nombre y apellido" id="nombre" value="">
+                    <input type="text" name="nombre" placeholder="Nombre y apellido" id="nombre" value="" required>
 
                     <label for="telefono">Teléfono</label>
-                    <input type="text" name="telefono" placeholder="Número de teléfono" id="telefono" value="">
+                    <input type="text" name="telefono" placeholder="Número de teléfono" id="telefono" value="" required>
 
                     <input type="submit" class="boton" name="accion" value="signinPaciente">
                 </fieldset>

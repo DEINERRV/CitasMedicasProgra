@@ -321,6 +321,9 @@ a{ text-decoration: none; }
     justify-content: center;
     align-items: center;
 }
+.error{
+    color:red;
+}
 
 /** Perfil Doc **/
 .subImg{

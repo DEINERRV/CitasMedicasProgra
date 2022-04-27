@@ -19,7 +19,7 @@
         
         <% if (errores != null) {
             for (String error : errores) {%>
-        <div class="error">
+        <div class="error contenedor">
             <p><%= error%></p>
         </div>
         <% }
@@ -40,16 +40,16 @@
                 <fieldset>
                     
                     <label for="nombre">Nombre y apellido</label>
-                    <input type="text" name="nombre" placeholder="Nombre y apellido" id="nombre" value="<%= usuario.getNombre()%>">
+                    <input type="text" name="nombre" placeholder="Nombre y apellido" id="nombre" value="<%= usuario.getNombre()%>" required>
 
                     <label for="telefono">Teléfono</label>
-                    <input type="text" name="telefono" placeholder="Número de teléfono" id="telefono" value="<%= usuario.getTelefono()%>">
+                    <input type="text" name="telefono" placeholder="Número de teléfono" id="telefono" value="<%= usuario.getTelefono()%>" required>
 
                     <label for="correo">Correo</label>
-                    <input type="text" name="correo" placeholder="Correo Electronico" id="telefono" value="<%= usuario.getCorreo()%>">
+                    <input type="text" name="correo" placeholder="Correo Electronico" id="correo" value="<%= usuario.getCorreo()%>" required>
 
                     <label for="precio">Precio por Consulta</label>
-                    <input type="number" name="precio" id="telefono" value="<%= doc.getPrecio()%>">
+                    <input type="number" name="precio" id="telefono" min="0" value="<%= doc.getPrecio()%>" required>
 
                     <label for="especialidad">Especialidad</label>
                     <select name="especialidad" id="especialidad">
