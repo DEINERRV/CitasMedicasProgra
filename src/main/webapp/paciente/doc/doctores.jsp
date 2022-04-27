@@ -77,7 +77,7 @@
                     </div>
 
                     <div class="inline-block padding1">
-                        <a class="boton" href="#">Ver Horario Extendido</a>
+                        <a class="boton" href="/CitasMedicas/DocHorExtServlet?accion=show&id-doc=<%=d.getUsuario().getId()%>">Ver Horario Extendido</a>
                     </div>
                 </div>
                 <% } %>

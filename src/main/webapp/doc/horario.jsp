@@ -14,8 +14,8 @@
         
         <% if (errores != null) {
             for (String error : errores) {%>
-        <div class="error">
-            <p><%= error%></p>
+        <div class="error contenedor">
+            <p>ERROR: <%= error%></p>
         </div>
         <% }
             }%>
