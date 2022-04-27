@@ -18,7 +18,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 @WebServlet(name = "SigninServlet", urlPatterns = {"/SigninServlet"})
 public class SigninServlet extends HttpServlet {
 
@@ -33,7 +32,7 @@ public class SigninServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String viewUrl = "";
         String accion = "";
         accion = request.getParameter("accion");
@@ -52,8 +51,8 @@ public class SigninServlet extends HttpServlet {
         request.getRequestDispatcher(viewUrl).forward(request, response);
     }
 
-    
-     public String show(HttpServletRequest request) {
+    //Parar Traer las Especialidades y Ciudades de la base y mandarlas
+    public String show(HttpServletRequest request) {
         try {
             EspecialidadDAO espDAO = new EspecialidadDAO();
             List<Especialidad> especialidades = espDAO.listar();
@@ -77,6 +76,7 @@ public class SigninServlet extends HttpServlet {
                 return "index.jsp";
             } else {
                 request.setAttribute("errores", errores);
+                this.saveProgress(request);
                 return "/paciente/signIn.jsp";
             }
         } catch (Exception e) {
@@ -88,34 +88,17 @@ public class SigninServlet extends HttpServlet {
     List validar(HttpServletRequest request) {
         List errores = new ArrayList();
 
-        if (request.getParameter("id").isEmpty()) {
-            errores.add("ID requerida");
-        } else {
-            try {
-                UsuarioDAO usDAO = new UsuarioDAO();
-                Usuario us = usDAO.buscar(Integer.parseInt(request.getParameter("id")));
-                if (us != null) {
-                    errores.add("Usuario ya registrado");
-                }
-            } catch (Exception e) {
+        try {
+            UsuarioDAO usDAO = new UsuarioDAO();
+            Usuario us = usDAO.buscar(Integer.parseInt(request.getParameter("id")));
+            if (us != null) {
+                errores.add("Usuario ya registrado");
             }
+        } catch (Exception e) {
         }
-        if (request.getParameter("contrasena").isEmpty()) {
-            errores.add("Clave requerida");
-        }
-        if (request.getParameter("contrasena2").isEmpty()) {
-            errores.add("Es necesrio confirmar la contraena");
-        }
-        if (!(request.getParameter("contrasena").isEmpty()) && !(request.getParameter("contrasena").isEmpty())) {
-            if (!request.getParameter("contrasena").equals(request.getParameter("contrasena2"))) {
-                errores.add("Las contrasenas no coinciden");
-            }
-        }
-        if (request.getParameter("nombre").isEmpty()) {
-            errores.add("Nombre requerida");
-        }
-        if (request.getParameter("telefono").isEmpty()) {
-            errores.add("Telefono requerida");
+
+        if (!request.getParameter("contrasena").equals(request.getParameter("contrasena2"))) {
+            errores.add("Las contrasenas no coinciden");
         }
 
         return errores;
@@ -173,14 +156,31 @@ public class SigninServlet extends HttpServlet {
             Usuario us = new Usuario(id, contra, nom, 2, tel, " ");
             Especialidad esp = new EspecialidadDAO().buscar(Integer.parseInt(request.getParameter("especialidad")));
             Ciudad ciu = new CiudadDAO().buscar(Integer.parseInt(request.getParameter("ciudad")));
-            
-            Doctor doc = new Doctor(esp,ciu,0,0,us,0);
+
+            Doctor doc = new Doctor(esp, ciu, 0, 0, us, 0);
             DoctorDAO docDAO = new DoctorDAO();
             docDAO.agregar(doc);
         } catch (Exception e) {
             throw e;
         }
     }
+
+    
+    
+    public void saveProgress(HttpServletRequest request) {
+        String id = request.getParameter("id");
+        String contra = request.getParameter("contrasena");
+        String contra2 = request.getParameter("contrasena2");
+        String nom = request.getParameter("nombre");
+        String tel = request.getParameter("telefono");
+        
+        request.setAttribute("id", id);
+        request.setAttribute("contra", contra);
+        request.setAttribute("contra2", contra2);
+        request.setAttribute("nom", nom);
+        request.setAttribute("tel", tel);
+    }
+    
     
     
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
