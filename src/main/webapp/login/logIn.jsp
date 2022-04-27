@@ -2,6 +2,7 @@
 <%@page import="java.util.Map"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% List<String> errores = (List<String>) request.getAttribute("errores"); 
+   String cedula = (String) request.getAttribute("id");
 %>
 
 <!DOCTYPE html>
@@ -23,7 +24,7 @@
             <form action="/CitasMedicas/LoginServlet" method="POST" class="formulario">
                 <fieldset>
                     <label for="id">ID del Usuario</label>
-                    <input type="text" name="id" placeholder="ID del Usuario" id="id" value="" required>
+                    <input type="number" name="id" placeholder="ID del Usuario" id="id" value="<%=(cedula!=null)?cedula:""%>" required class="inputNumNone">
 
                     <label for="contrasena">Contrasena del Usuario</label>
                     <input type="password" name="contrasena" placeholder="Contrasena del Usuario" id="contrasena" value="" required>

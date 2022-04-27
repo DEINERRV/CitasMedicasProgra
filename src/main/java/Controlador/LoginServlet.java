@@ -39,9 +39,6 @@ public class LoginServlet extends HttpServlet {
             case "logout":
                 viewUrl = this.logout(request);
                 break;
-            case "show":
-                viewUrl = this.show(request);
-                break;
         }
 
         request.getRequestDispatcher(viewUrl).forward(request, response);
@@ -49,28 +46,10 @@ public class LoginServlet extends HttpServlet {
 
     private String login(HttpServletRequest request) {
         try {
-            List<String> errores = this.validar(request);
-            if (errores.isEmpty()) {
-                return this.loginAction(request);
-            } else {
-                request.setAttribute("errores", errores);
-                return "/login/logIn.jsp";
-            }
+            return this.loginAction(request);
         } catch (Exception e) {
             return "/comun/error.jsp";
         }
-    }
-
-    //Verifica que los campos del formulario no esten vacios
-    List validar(HttpServletRequest request) {
-        List errores = new ArrayList();
-        if (request.getParameter("id").isEmpty()) {
-            errores.add("ID requerida");
-        }
-        if (request.getParameter("contrasena").isEmpty()) {
-            errores.add("Clave requerida");
-        }
-        return errores;
     }
 
     public String loginAction(HttpServletRequest request) {
@@ -84,10 +63,12 @@ public class LoginServlet extends HttpServlet {
             if (us == null) {
                 errores.add("Usuario No Registrado");
                 request.setAttribute("errores", errores);
+                this.saveProgres(request);
                 return "/login/logIn.jsp";
             } else if (!(us.getContrasena().equals(request.getParameter("contrasena")))) {
                 errores.add("Usuario o clave incorrectos");
                 request.setAttribute("errores", errores);
+                this.saveProgres(request);
                 return "/login/logIn.jsp";
             }
 
@@ -127,21 +108,10 @@ public class LoginServlet extends HttpServlet {
         return "/index.jsp";
     }
 
-    public String show(HttpServletRequest request) {
+    public void saveProgres(HttpServletRequest request) {
         String id = request.getParameter("id");
-        String contra = request.getParameter("contrasena");
-
-        if (id == null) {
-            id = "";
-        }
-        if (contra == null) {
-            contra = "";
-        }
-
+        if (id == null) id = "";
         request.setAttribute("id", id);
-        request.setAttribute("contra", contra);
-
-        return "/login/logIn.jsp";
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

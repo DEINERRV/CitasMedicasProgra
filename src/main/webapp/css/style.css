@@ -321,6 +321,11 @@ a{ text-decoration: none; }
     justify-content: center;
     align-items: center;
 }
+.inputNumNone::-webkit-inner-spin-button,
+.inputNumNone::-webkit-outer-spin-button{
+  -webkit-appearance: none;
+  margin: 0;
+}
 .error{
     color:red;
 }
