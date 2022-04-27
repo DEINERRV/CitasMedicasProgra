@@ -11,9 +11,10 @@
     <body>
         <%@ include file="/comun/header.jsp" %>
         
-        <h1>Solicitudes de Doctores</h1>
-
+        
         <main class="contenedor">
+            <h1>Solicitudes de Doctores</h1>
+            
             <% for (Doctor d : doctores) { %>
             <div class="doctor">
                 <img class="foto-doctor" loading="lazy" src="${pageContext.request.contextPath}/img/<%=d.getUsuario().getId()%>.jpg" 
@@ -22,8 +23,8 @@
                 <div class="contenido-doctor">
                     <p> <%= d.getUsuario().getNombre() %></p>
                     <p class="precio"> $<%= d.getPrecio() %></p>
-                    <p> <%= d.getCiudad() %></p>
-                    <p> <%= d.getEspecialidad() %></p>
+                    <p> <%= d.getCiudad().getNombre() %></p>
+                    <p> <%= d.getEspecialidad().getNombre() %></p>
                 </div>
                 <div class="inline-block padding1">
                     <a class="boton" href="/CitasMedicas/AdminDocServlet?accion=denegar&us-id=<%= d.getUsuario().getId() %>">Aceptar</a>

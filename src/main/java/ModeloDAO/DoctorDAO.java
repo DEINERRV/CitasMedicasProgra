@@ -56,20 +56,20 @@ public class DoctorDAO {
         return list;
     }
     
-    public List listarXespecialidad(int id_esp){
-        String sql = "SELECT * FROM doctor WHERE id_especialidad="+id_esp+";";
+    public List listarXespecialidad(int id_esp,int estado){
+        String sql = "SELECT * FROM doctor WHERE id_especialidad="+id_esp+" AND estado="+estado+";";
         return this.listar(sql);
     }
-    public List listarXciudad(int id_ciudad){
-        String sql = "SELECT * FROM doctor WHERE id_ciudad="+id_ciudad+";";
+    public List listarXciudad(int id_ciudad,int estado){
+        String sql = "SELECT * FROM doctor WHERE id_ciudad="+id_ciudad+" AND estado="+estado+";";
         return this.listar(sql);
     }
     public List listarXestado(int estado){
         String sql = "SELECT * FROM doctor WHERE estado="+estado+";";
         return this.listar(sql);
     }
-    public List listarXespecialidadCiudad(int id_esp,int id_ciu){
-        String sql = "SELECT * FROM doctor WHERE id_especialidad="+id_esp+" AND id_ciudad="+id_ciu+";";
+    public List listarXespecialidadCiudad(int id_esp,int id_ciu,int estado){
+        String sql = "SELECT * FROM doctor WHERE id_especialidad="+id_esp+" AND id_ciudad="+id_ciu+" AND estado="+estado+";";
         return this.listar(sql);
     }
     
@@ -112,8 +112,12 @@ public class DoctorDAO {
         try {
             con = cn.getConexion();
             ps = con.prepareStatement(sql);
+            
+            DiaDAO horarioDAO = new DiaDAO();
+            horarioDAO.eliminar(id);
+            
             ps.execute();
-
+            
             UsuarioDAO usDAO = new UsuarioDAO();
             usDAO.eliminar(id);
         } catch (SQLException e) {
