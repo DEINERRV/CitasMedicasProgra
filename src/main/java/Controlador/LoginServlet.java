@@ -78,7 +78,12 @@ public class LoginServlet extends HttpServlet {
             String viewUrl = "";
             switch (us.getTipo()) {
                 case 1:
-                    viewUrl = "PacCitasServlet?accion=show";
+                    //Para ver si antes de logearse habia buscado algo o intentado sacar una cita
+                    //Y redirigirlo a la pagina de doctores antes que a la de citas del usuario
+                    String id_esp = (String) request.getSession().getAttribute("buscEsp");
+                    String id_ciu = (String) request.getSession().getAttribute("buscCiu");
+                    if(id_esp!=null && id_ciu!=null)viewUrl = "PacDocsServlet?accion=show";
+                    else viewUrl = "PacCitasServlet?accion=show";
                     break;
                 case 2:
                     Doctor doc = new DoctorDAO().buscar(us.getId());
