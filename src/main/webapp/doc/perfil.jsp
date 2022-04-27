@@ -29,7 +29,9 @@
         <main class="contenedor">
 
             <div class="subImg"> 
-
+                <img class="foto-doctor" loading="lazy" src="${pageContext.request.contextPath}/img/<%=usuario.getId()%>.png" 
+                         onerror="this.src='${pageContext.request.contextPath}/img/noFoto.png';" />
+                
                 <form method="POST" action="/CitasMedicas/DocPerfilServlet" enctype="multipart/form-data" name="upload">
                     <input type="file" name="imagen" accept="image/jpg, image/gif, image/png">
                     <input type="submit" name="accion" value="Upload photo"  >
