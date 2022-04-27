@@ -7,6 +7,9 @@
 <% List<Doctor> doctores = (List) request.getAttribute("doctores");%>
 <% List<Ciudad> ciudades = (List) request.getAttribute("ciudades");%>
 <% List<Especialidad> especialidades = (List) request.getAttribute("especialidades");%>
+<% String busEsp = (String) session.getAttribute("buscEsp");
+   String busCiu = (String) session.getAttribute("buscCiu");%>
+
 
 <!DOCTYPE html>
 <html>
@@ -20,17 +23,17 @@
         <form action="/CitasMedicas/PacDocsServlet" method="POST" class="buscar">
             <label for="especialidad">especialidad</label>
             <select name="especialidad" id="especialidad">
-                <option value="999" selected>Todos</option>
+                <option value="999" <%=(busEsp.equals("999"))?"selected":""%> >Todos</option>
                 <%for(Especialidad esp:especialidades){ %>
-                <option value="<%= esp.getId() %>"><%= esp.getNombre() %></option>
+                <option value="<%= esp.getId() %>" <%=(busEsp.equals(String.valueOf(esp.getId())))?"selected":""%> ><%= esp.getNombre() %></option>
                 <% } %>
             </select>
 
             <label for="ciudad">Ciudad</label>
             <select name="ciudad" id="ciudad">
-                <option value="999">Todas</option>
+                <option value="999" <%=(busCiu.equals("999"))?"selected":""%> >Todas</option>
                 <% for(Ciudad ciu:ciudades){ %>
-                <option value="<%= ciu.getId() %>"><%= ciu.getNombre() %></option>
+                <option value="<%= ciu.getId() %>" <%=(busCiu.equals(String.valueOf(ciu.getId())))?"selected":""%> ><%= ciu.getNombre() %></option>
                 <% } %>
             </select>
 

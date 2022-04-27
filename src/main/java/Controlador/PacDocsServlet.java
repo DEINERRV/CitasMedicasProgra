@@ -36,16 +36,23 @@ public class PacDocsServlet extends HttpServlet {
             throws ServletException, IOException {
         
         String viewUrl="";
-        String accion="";
-        accion = request.getParameter("accion");
-        switch(accion){
-            case "show": 
-                viewUrl = this.listarAllDocs(request,"/paciente/doc/doctores.jsp");
-                break;
-            case "buscar":
-                viewUrl = this.filtrarDocs(request,"/paciente/doc/doctores.jsp");
-                break;
+        
+        //Para ver si se acaba de aplicar algun filtro de busqueda
+        String id_esp_bus = request.getParameter("especialidad");
+        String id_ciu_bus = request.getParameter("ciudad");
+        
+        //Si no se acaba de aplicar, entonces se aplica el ultimo filtro usado por el usuario
+        String id_esp = (String) request.getSession().getAttribute("buscEsp");
+        String id_ciu = (String) request.getSession().getAttribute("buscCiu");
+        
+        if(id_esp_bus!=null || id_ciu_bus!=null) viewUrl = this.filtrarDocs(request,id_esp_bus,id_ciu_bus,"/paciente/doc/doctores.jsp");
+        else if(id_esp==null && id_ciu==null){
+            viewUrl = this.listarAllDocs(request,"/paciente/doc/doctores.jsp");
         }
+        else{
+            viewUrl = this.filtrarDocs(request,id_esp,id_ciu,"/paciente/doc/doctores.jsp");
+        }
+        
         
         request.getRequestDispatcher(viewUrl).forward( request, response);
     }
@@ -78,6 +85,7 @@ public class PacDocsServlet extends HttpServlet {
             
             this.listarDocs(request, doctores);
             
+            this.saveProgress(request, "999", "999");
             return url;
         }
         catch(Exception e){
@@ -85,10 +93,10 @@ public class PacDocsServlet extends HttpServlet {
         }
     }
     
-    private String filtrarDocs(HttpServletRequest request,String url){
+    private String filtrarDocs(HttpServletRequest request,String idEsp,String idCiu,String url){
         try{
-            int id_esp = Integer.parseInt(request.getParameter("especialidad"));
-            int id_ciu = Integer.parseInt(request.getParameter("ciudad"));
+            int id_esp = Integer.parseInt(idEsp);
+            int id_ciu = Integer.parseInt(idCiu);
              List<Doctor> doctores = new ArrayList();
              
             if(id_esp!=999 && id_ciu!=999)
@@ -102,11 +110,22 @@ public class PacDocsServlet extends HttpServlet {
             
             this.listarDocs(request, doctores);
             
+            this.saveProgress(request,idEsp , idCiu);
             return url;
         }
         catch(Exception e){
             return "/index.jsp";
         }
+    }
+    
+    
+    public void saveProgress(HttpServletRequest request,String esp,String ciu){
+        request.getSession().setAttribute("buscEsp", esp);
+        request.getSession().setAttribute("buscCiu", ciu);
+        
+        //En el caso que no esten
+        if(esp==null) request.getSession().setAttribute("buscEsp", "999");
+        if(ciu==null) request.getSession().setAttribute("buscCiu", "999");
     }
     
 
