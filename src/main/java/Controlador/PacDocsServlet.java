@@ -100,11 +100,11 @@ public class PacDocsServlet extends HttpServlet {
              List<Doctor> doctores = new ArrayList();
              
             if(id_esp!=999 && id_ciu!=999)
-                doctores = new DoctorDAO().listarXespecialidadCiudad(id_esp, id_ciu);
+                doctores = new DoctorDAO().listarXespecialidadCiudad(id_esp, id_ciu,1);
             else if(id_ciu!=999)
-                doctores = new DoctorDAO().listarXciudad(id_ciu);
+                doctores = new DoctorDAO().listarXciudad(id_ciu,1);
             else if(id_esp!=999)
-                doctores = new DoctorDAO().listarXespecialidad(id_esp);
+                doctores = new DoctorDAO().listarXespecialidad(id_esp,1);
             else 
                 doctores = new DoctorDAO().listarXestado(1);
             
