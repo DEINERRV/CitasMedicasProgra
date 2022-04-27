@@ -52,7 +52,7 @@ public class PacReservarServlet extends HttpServlet {
     
     private String confirmar(HttpServletRequest request){
          if(request.getSession().getAttribute("usuario")==null){
-            return "/paciente/signIn.jsp";
+            return "/login/logIn.jsp";
          }
          try{
              Doctor doc = new DoctorDAO().buscar(Integer.parseInt(request.getParameter("id-doc")));
