@@ -69,7 +69,7 @@
                     </select>
 
 
-                    <input type="submit" class="boton" name="accion" value="signinDoctor">
+                    <input type="submit" class="boton" name="accion" value="signin como Doctor">
                 </fieldset>
             </form>
 

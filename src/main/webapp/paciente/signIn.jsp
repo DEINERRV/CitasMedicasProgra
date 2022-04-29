@@ -43,7 +43,7 @@
                     <label for="telefono">Teléfono</label>
                     <input type="text" name="telefono" placeholder="Número de teléfono" id="telefono" value="<%=(tel!=null)?tel:""%>" required>
 
-                    <input type="submit" class="boton" name="accion" value="signinPaciente">
+                    <input type="submit" class="boton" name="accion" value="signin como Paciente">
                 </fieldset>
             </form>
 
