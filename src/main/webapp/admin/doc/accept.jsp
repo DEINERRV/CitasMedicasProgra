@@ -27,7 +27,7 @@
                     <p> <%= d.getEspecialidad().getNombre() %></p>
                 </div>
                 <div class="inline-block padding1">
-                    <a class="boton" href="/CitasMedicas/AdminDocServlet?accion=denegar&us-id=<%= d.getUsuario().getId() %>">Aceptar</a>
+                    <a class="boton" href="/CitasMedicas/AdminDocServlet?accion=aceptar&us-id=<%= d.getUsuario().getId() %>">Aceptar</a>
                 </div>
                 <div class="inline-block padding1">
                     <a class="boton" href="/CitasMedicas/AdminDocServlet?accion=denegar&us-id=<%= d.getUsuario().getId() %>">Denegar</a>
