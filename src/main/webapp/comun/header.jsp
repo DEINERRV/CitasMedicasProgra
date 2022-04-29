@@ -35,7 +35,7 @@
                 }%>
                 <a href="/CitasMedicas/LoginServlet?accion=logout">Log Out</a>
             <% } else { %>
-            <a href="#">Nosotros</a>
+            <a href="${pageContext.request.contextPath}/comun/nosotros.jsp">Nosotros</a>
             <a href="/CitasMedicas/PacDocsServlet?accion=show">Doctores</a>
             <a href="${pageContext.request.contextPath}/login/logIn.jsp">Log In</a>
             <a href="${pageContext.request.contextPath}/paciente/signIn.jsp">Sign In</a>
