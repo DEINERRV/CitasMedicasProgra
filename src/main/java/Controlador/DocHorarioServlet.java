@@ -85,12 +85,21 @@ public class DocHorarioServlet extends HttpServlet {
             }
             
              if (request.getParameter(nomDia)!=null){
-                LocalTime inicio = LocalTime.parse(request.getParameter(i+"-hora-i"));
-                LocalTime finall = LocalTime.parse(request.getParameter(i+"-hora-f"));
-                
-                if(inicio.isAfter(finall)){
-                    errores.add("Error al definir el horario(No se puede establecer una hora inicial que sea despues de la hora final de trabajo)");
-                }
+                 LocalTime inicio = null;
+                 LocalTime finall = null;
+                 try{
+                     inicio = LocalTime.parse(request.getParameter(i+"-hora-i"));
+                     finall = LocalTime.parse(request.getParameter(i+"-hora-f"));
+                 }
+                 catch(Exception e){
+                     errores.add("ERROR: Se debe brindar tanto la hora de incio como la final en los dias que se trabajan");
+                 }
+                 
+                 if(inicio!=null && finall!=null){
+                    if(inicio.isAfter(finall)){
+                        errores.add("Error al definir el horario(No se puede establecer una hora inicial que sea despues de la hora final de trabajo)");
+                    }
+                 }
              }
         }
         
