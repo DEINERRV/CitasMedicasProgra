@@ -51,8 +51,11 @@
                     <input type="text" name="correo" placeholder="Correo Electronico" id="correo" value="<%= usuario.getCorreo()%>" required>
 
                     <label for="precio">Precio por Consulta</label>
-                    <input type="number" name="precio" id="telefono" min="0" value="<%= doc.getPrecio()%>" required>
+                    <input type="number" name="precio" id="precio" min="0" value="<%= doc.getPrecio()%>" required>
 
+                    <label for="precio">Tiempo por Consulta</label>
+                    <input type="number" name="tiempo" id="tiempo" min="5" value="<%= doc.getTiempo_cita() %>" required>
+                    
                     <label for="especialidad">Especialidad</label>
                     <select name="especialidad" id="especialidad">
                         <%for (Especialidad esp : especialidades) {%>

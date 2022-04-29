@@ -1,3 +1,6 @@
+<%@page import="java.time.format.FormatStyle"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="java.time.LocalDate"%>
 <%@page import="Modelo.Cita"%>
 <%@page import="java.util.List"%>
@@ -25,7 +28,7 @@
                         <p><%=c.getDoc().getCiudad().getNombre()%></p>
                         <p><%=c.getPac().getTelefono()%></p>
                         <p><%=c.getPac().getCorreo()%></p>
-                        <p><%=c.getDia()%></p>
+                        <p><%=c.getDia().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG))%></p>
                         <p><%=c.getHora()%></p>
                     </div>
 
@@ -40,7 +43,7 @@
                         </form>
                     </div>
                     
-                    <% if(LocalDate.now().isAfter(c.getDia())){%>
+                            <% if(c.getDia().isAfter(LocalDate.now())){%>
                     <div class="inline-block padding1">
                         <a class="boton" href="DocCitasServlet?accion=cancelar&dia=<%=c.getDia()%>&hora=<%=c.getHora()%>">Cancelar Cita</a>
                     </div>    

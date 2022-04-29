@@ -93,6 +93,7 @@ public class DocPerfilServlet extends HttpServlet {
                 doc.getUsuario().setTelefono(request.getParameter("telefono"));
                 doc.getUsuario().setCorreo(request.getParameter("correo"));
                 doc.setPrecio(Integer.parseInt(request.getParameter("precio")));
+                doc.setTiempo_cita(Integer.parseInt(request.getParameter("tiempo")));
                 
                 Especialidad esp = new EspecialidadDAO().buscar(Integer.parseInt(request.getParameter("especialidad")));
                 Ciudad ciu = new CiudadDAO().buscar(Integer.parseInt(request.getParameter("ciudad")));

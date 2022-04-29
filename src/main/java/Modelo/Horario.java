@@ -47,6 +47,9 @@ public class Horario {
                 int valdia = dias.get(i).getId();
                 if (!(valdia < dia.getDayOfWeek().getValue()) || !flag) {
                     dia = dia.with(TemporalAdjusters.nextOrSame(DayOfWeek.of(valdia)));
+                    if(!diasCitas.isEmpty() && this.getDias().size()==1){
+                        dia = dia.with(TemporalAdjusters.next(DayOfWeek.of(valdia)));
+                    }
                     diasCitas.add(dia);
                     flag = false;
                 }
@@ -60,23 +63,13 @@ public class Horario {
         LocalDate diaAnt = null;
         boolean flag = false;
         
-        for (int i = dias.size() - 1; i >= 0; i--) {
-            if (diaAnt!=null) {
+        for(int i=0;i<dias.size();i++){
+            LocalDate aux = dia.with(TemporalAdjusters.previous(DayOfWeek.of(dias.get(i).getId())));
+            
+            if(diaAnt!=null && diaAnt.isAfter(aux)){
                 break;
             }
-            int valdia = dias.get(i).getId();
-            if(flag){
-                LocalDate aux = dia.with(TemporalAdjusters.previous(DayOfWeek.of(valdia)));
-                diaAnt = aux;
-            }
-            if (valdia > dia.getDayOfWeek().getValue()) {
-                LocalDate aux = dia.with(TemporalAdjusters.previous(DayOfWeek.of(valdia)));
-                diaAnt = aux;
-            }
-            else if(valdia == dia.getDayOfWeek().getValue()){
-                flag = true;
-            }
-            
+            else diaAnt = aux;
             
         }
         

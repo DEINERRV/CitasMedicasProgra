@@ -1,3 +1,5 @@
+<%@page import="java.time.format.FormatStyle"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="Modelo.Cita"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -24,7 +26,7 @@
                         <p class="precio">$<%= c.getDoc().getPrecio()%></p>
                         <p><%=c.getDoc().getCiudad().getNombre()%></p>
                         <p><%=c.getDoc().getEspecialidad().getNombre()%></p>
-                        <p><%=c.getDia()%></p>
+                        <p><%=c.getDia().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG))%></p>
                         <p><%=c.getHora()%></p>
                     </div>
                     

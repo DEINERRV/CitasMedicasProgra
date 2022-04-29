@@ -1,6 +1,11 @@
+<%@page import="java.time.format.FormatStyle"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
+<%@page import="java.time.LocalDate"%>
 <%@page import="Modelo.Doctor"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% Doctor doc = (Doctor) request.getAttribute("doc"); %>
+<% Doctor doc = (Doctor) request.getAttribute("doc"); 
+   LocalDate dia = (LocalDate) request.getAttribute("dia");
+%>
 
 
 <!DOCTYPE html>
@@ -19,7 +24,7 @@
                 <p class="precio">$<%= doc.getPrecio() %></p>
                 <p><%= doc.getCiudad().getNombre() %></p>
                 <p><%= doc.getEspecialidad().getNombre() %></p>
-                <p><%= request.getAttribute("dia") %></p>
+                <p><%=dia.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG))%></p>
                 <p><%= request.getAttribute("hora") %></p>
             </div>
             <div class="inline-block padding1">

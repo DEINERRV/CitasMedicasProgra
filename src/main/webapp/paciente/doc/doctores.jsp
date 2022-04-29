@@ -1,3 +1,6 @@
+<%@page import="java.time.format.FormatStyle"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="Modelo.Especialidad"%>
 <%@page import="Modelo.Ciudad"%>
 <%@page import="Modelo.Cita"%>
@@ -61,14 +64,14 @@
                     <div class="horario-doctor">
                         <% for(int i=0;i<d.getSlots().size();i++){ %>
                         <div class="dia-doctor">
-                            <p><%= d.getSlots().get(i).getDia() %></p>
+                            <p><%= d.getSlots().get(i).getDia().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)) %></p>
                             <ul>
                                 <% boolean flag = true; %>
                                 <% do{ %>
                                 <% if(d.getSlots().get(i).getPac()==null){ %>
-                                <li><a href="PacReservarServlet?accion=show&id-doc=<%= d.getUsuario().getId()%>&dia=<%= d.getSlots().get(i).getDia()%>&hora=<%= d.getSlots().get(i).getHora() %>"><%= d.getSlots().get(i).getHora() %></a></li>
+                                <li><a class="boton" href="PacReservarServlet?accion=show&id-doc=<%= d.getUsuario().getId()%>&dia=<%= d.getSlots().get(i).getDia()%>&hora=<%= d.getSlots().get(i).getHora() %>"><%= d.getSlots().get(i).getHora() %></a></li>
                                 <% }else{ %>
-                                <li><span><%= d.getSlots().get(i).getHora() %></span></li>
+                                <li><span class="boton boton-dis bk-grisC"><%= d.getSlots().get(i).getHora() %></span></li>
                                 <% } %>
                                 <% if(i+1==d.getSlots().size()){ flag = false; %>
                                 <% }else if(!d.getSlots().get(i).getDia().equals(d.getSlots().get(i+1).getDia())){flag = false; %>
@@ -80,7 +83,7 @@
                     </div>
 
                     <div class="inline-block padding1">
-                        <a class="boton" href="/CitasMedicas/DocHorExtServlet?accion=show&id-doc=<%=d.getUsuario().getId()%>">Ver Horario Extendido</a>
+                        <a class="boton" target="_blank" href="/CitasMedicas/DocHorExtServlet?accion=show&id-doc=<%=d.getUsuario().getId()%>">Ver Horario Extendido</a>
                     </div>
                 </div>
                 <% } %>

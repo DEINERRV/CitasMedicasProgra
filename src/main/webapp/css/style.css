@@ -81,10 +81,25 @@ a{ text-decoration: none; }
 .boton:hover{
     cursor: pointer;
 }
+.boton-dis:hover{
+    cursor: default;
+}
 .dos-columnas{
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
+}
+.bk-verde{
+    background-color: var(--verde);
+}
+.bk-rojo{
+    background-color: red;
+}
+.bk-grisC{
+    background-color: var(--gris);
+}
+.bk-azul{
+    background-color: var(--azul);
 }
 
 /** Contenedor **/

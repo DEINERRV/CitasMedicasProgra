@@ -1,3 +1,5 @@
+<%@page import="java.time.format.FormatStyle"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="Modelo.Doctor"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% Doctor doc = (Doctor) request.getAttribute("doc");%>
@@ -32,14 +34,14 @@
                 <div class="horario-doctor">
                         <% for(int i=0;i<doc.getSlots().size();i++){ %>
                         <div class="dia-doctor">
-                            <p><%= doc.getSlots().get(i).getDia() %></p>
+                            <p><%= doc.getSlots().get(i).getDia().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)) %></p>
                             <ul>
                                 <% boolean flag = true; %>
                                 <% do{ %>
                                 <% if(doc.getSlots().get(i).getPac()==null){ %>
-                                <li><a href="PacReservarServlet?accion=show&id-doc=<%= doc.getUsuario().getId()%>&dia=<%= doc.getSlots().get(i).getDia()%>&hora=<%= doc.getSlots().get(i).getHora() %>"><%= doc.getSlots().get(i).getHora() %></a></li>
+                                <li><a class="boton" href="PacReservarServlet?accion=show&id-doc=<%= doc.getUsuario().getId()%>&dia=<%= doc.getSlots().get(i).getDia()%>&hora=<%= doc.getSlots().get(i).getHora() %>"><%= doc.getSlots().get(i).getHora() %></a></li>
                                 <% }else{ %>
-                                <li><span><%= doc.getSlots().get(i).getHora() %></span></li>
+                                <li><span class="boton boton-dis bk-grisC"><%= doc.getSlots().get(i).getHora() %></span></li>
                                 <% } %>
                                 <% if(i+1==doc.getSlots().size()){ flag = false; %>
                                 <% }else if(!doc.getSlots().get(i).getDia().equals(doc.getSlots().get(i+1).getDia())){flag = false; %>
