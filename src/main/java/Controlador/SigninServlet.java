@@ -40,10 +40,10 @@ public class SigninServlet extends HttpServlet {
             case "show":
                 viewUrl = this.show(request);
                 break;
-            case "signinPaciente":
+            case "signin como Paciente":
                 viewUrl = this.signinPaciente(request);
                 break;
-            case "signinDoctor":
+            case "signin como Doctor":
                 viewUrl = this.signinDoctor(request);
                 break;
         }
