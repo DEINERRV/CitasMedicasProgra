@@ -8,6 +8,7 @@
 <% List<Especialidad> especialidades = (List) request.getAttribute("especialidades");%>
 <% List<Ciudad> ciudades = (List) request.getAttribute("ciudades");%>
 <% List<String> errores = (List<String>) request.getAttribute("errores");%>
+<% String mensaje = (String) request.getAttribute("mensaje");%>
 
 
 <!DOCTYPE html>
@@ -27,6 +28,7 @@
         
         
         <main class="contenedor">
+            <p style="color:green"><%=(mensaje!=null)?mensaje:""%></p>
 
             <div class="subImg"> 
                 <img class="foto-doctor" loading="lazy" src="${pageContext.request.contextPath}/img/<%=usuario.getId()%>.png" 

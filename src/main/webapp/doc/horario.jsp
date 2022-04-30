@@ -3,6 +3,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% Doctor doc = (Doctor) session.getAttribute("doc"); %>
 <% List<String> errores = (List<String>) request.getAttribute("errores");%>
+<% String mensaje = (String) request.getAttribute("mensaje");%>
 
 <!DOCTYPE html>
 <html>
@@ -20,7 +21,7 @@
         <% }
             }%>
 
-
+        <p style="color:green"><%=(mensaje!=null)?mensaje:""%></p>
         <form action="/CitasMedicas/DocHorarioServlet" method="POST" class="contenedor">
             <div class="horario-form "> 
                 <div class="dia-form">

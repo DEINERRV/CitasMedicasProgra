@@ -59,7 +59,8 @@ public class DocHorarioServlet extends HttpServlet {
                 doc.setHorario(new Horario(horario));
                 request.getSession().setAttribute("doc", doc);
 
-                return "index.jsp";
+                request.setAttribute("mensaje", "Se ha actulizado los datos correctamente");
+                return "/doc/horario.jsp";
             } else {
                 request.setAttribute("errores", errores);
                 return "/doc/horario.jsp";

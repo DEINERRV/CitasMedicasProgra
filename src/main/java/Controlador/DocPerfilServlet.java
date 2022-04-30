@@ -58,7 +58,7 @@ public class DocPerfilServlet extends HttpServlet {
                 break;
             case "Upload photo":
                 upload(request);
-                viewUrl = "index.jsp";
+                viewUrl = this.show(request);
                 break;
         }
 
@@ -106,7 +106,8 @@ public class DocPerfilServlet extends HttpServlet {
                 request.getSession().setAttribute("usuario", doc.getUsuario());
                 request.getSession().setAttribute("doc", doc);
                 
-                return "index.jsp";
+                request.setAttribute("mensaje", "Se ha actulizado los datos correctamente");
+                return this.show(request);
             } else {
                 request.setAttribute("errores", errores);
                 return this.show(request);

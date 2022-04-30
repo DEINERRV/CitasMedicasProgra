@@ -136,7 +136,7 @@ public class SigninServlet extends HttpServlet {
             List<String> errores = this.validar(request);
             if (errores.isEmpty()) {
                 this.signinDoctorAction(request);
-                return "index.jsp";
+                return "/doc/mensaje.jsp";
             } else {
                 request.setAttribute("errores", errores);
                 this.saveProgress(request);

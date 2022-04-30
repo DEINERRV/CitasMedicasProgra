@@ -5,7 +5,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% Usuario usuario1 = (Usuario) session.getAttribute("usuario");  %>
 <% List<String> errores = (List<String>) request.getAttribute("errores");%>
-
+<% String mensaje = (String) request.getAttribute("mensaje");%>
 
 <!DOCTYPE html>
 <html>
@@ -24,7 +24,9 @@
         
         
         <main class="contenedor">
-
+            
+            <p style="color:green"><%=(mensaje!=null)?mensaje:""%></p>
+            
             <div class="subImg"> 
                 <img class="foto-doctor" loading="lazy" src="${pageContext.request.contextPath}/img/<%=usuario.getId()%>.png" 
                          onerror="this.src='${pageContext.request.contextPath}/img/noFoto.png';" />

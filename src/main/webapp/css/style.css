@@ -238,6 +238,7 @@ a{ text-decoration: none; }
 }
 .foto-doctor{
     padding: 1rem;
+    max-height: 30rem;
     width: 100%;
 }
 .dia-doctor ul{

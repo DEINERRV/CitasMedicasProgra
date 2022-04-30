@@ -61,6 +61,7 @@ public class PacPerfilServlet extends HttpServlet {
 
             request.getSession().setAttribute("usuario", us);
 
+            request.setAttribute("mensaje", "Se ha actulizado los datos correctamente");
             return "/paciente/perfil.jsp";
 
         } catch (Exception e) {
